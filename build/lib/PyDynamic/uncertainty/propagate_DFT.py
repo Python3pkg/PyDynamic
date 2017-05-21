@@ -337,7 +337,7 @@ def DFT2AmpPhase(F,UF,keep_sparse=False, tol=1.0, return_type="separate"):
 	if np.any(A/uF < tol):
 		print('DFT2AmpPhase Warning\n Some amplitude values are below the defined threshold.')
 		print('The GUM formulas may become unreliable and a Monte Carlo approach is recommended instead.')
-		print('The actual minimum value of A/uF is %.2e and the threshold is %.2e'%((A/uF).min(), tol))
+		print(('The actual minimum value of A/uF is %.2e and the threshold is %.2e'%((A/uF).min(), tol)))
 	aR = R/A
 	aI = I/A
 	pR = -I/A**2

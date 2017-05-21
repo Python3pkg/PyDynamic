@@ -13,7 +13,7 @@ def read(fname):
 setup(
     name = "PyDynamic",
     version = version,
-    author = u"Sascha Eichstädt, Ian Smith",
+    author = "Sascha Eichstädt, Ian Smith",
     author_email = "sascha.eichstaedt@ptb.de",
     description = ("A software package for the analysis of dynamic measurements"),
     license = "LGPLv3",

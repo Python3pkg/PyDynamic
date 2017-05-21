@@ -15,7 +15,7 @@ def col_hstack(vectors):
     """
 
     if isinstance(vectors,list):
-        col_vectors = map(lambda x: x[:,np.newaxis], vectors)
+        col_vectors = [x[:,np.newaxis] for x in vectors]
     else:
         raise ValueError("Input must be of type list\n")    
     
@@ -51,7 +51,7 @@ def stack(elements):
         else:
             return v[:,np.newaxis]
             
-    return np.hstack(map(lambda x: make_matrix(x), elements))
+    return np.hstack([make_matrix(x) for x in elements])
     
 
 def print_vec(vector,prec=5,retS=False,vertical=False):

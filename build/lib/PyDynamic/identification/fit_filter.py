@@ -35,8 +35,8 @@ def LSIIR(Hvals,Nb,Na,f,Fs,tau=0,justFit=False):
     
     """
 
-    print("\nLeast-squares fit of an order %d digital IIR filter" % max(Nb,Na) )
-    print("to a frequency response given by %d values.\n" % len(Hvals) )
+    print(("\nLeast-squares fit of an order %d digital IIR filter" % max(Nb,Na) ))
+    print(("to a frequency response given by %d values.\n" % len(Hvals) ))
   
     w = 2*np.pi*f/Fs
     Ns= np.arange(0,max(Nb,Na)+1)[:,np.newaxis]
@@ -63,7 +63,7 @@ def LSIIR(Hvals,Nb,Na,f,Fs,tau=0,justFit=False):
         if np.count_nonzero(np.abs(np.roots(a))>1)>0:
             print( "Obtained filter is NOT stable.")
         sos = np.sum( np.abs( (dsp.freqz(b,a,2*np.pi*f/Fs)[1]-Hvals)**2 ) )
-        print("Final sum of squares = %e" % sos)
+        print(("Final sum of squares = %e" % sos))
         tau = 0
         return b,a,tau
     
@@ -93,12 +93,12 @@ def LSIIR(Hvals,Nb,Na,f,Fs,tau=0,justFit=False):
         print("Caution: The algorithm did NOT result in a stable IIR filter!")
         print("Maybe try again with a higher value of tau0 or a higher filter order?")
         
-    print("Least squares fit finished after %d iterations (tau=%d)." % (run,tau))
+    print(("Least squares fit finished after %d iterations (tau=%d)." % (run,tau)))
     Hd = dsp.freqz(b,a,2*np.pi*f/Fs)[1]
     Hd = Hd*np.exp(1j*2*np.pi*f/Fs*tau)
     res= np.hstack((np.real(Hd) - np.real(Hvals), np.imag(Hd) - np.imag(Hvals)))
     rms= np.sqrt( np.sum( res**2 )/len(f))
-    print("Final rms error = %e \n\n" % rms)
+    print(("Final rms error = %e \n\n" % rms))
 
     return b,a,int(tau)    
 
@@ -125,8 +125,8 @@ def LSFIR(H,N,tau,f,Fs,Wt=None):
 
     """
 
-    print("\nLeast-squares fit of an order %d digital FIR filter to the" % N)
-    print("reciprocal of a frequency response given by %d values.\n" % len(H))
+    print(("\nLeast-squares fit of an order %d digital FIR filter to the" % N))
+    print(("reciprocal of a frequency response given by %d values.\n" % len(H)))
 
     H = H[:,np.newaxis]
 
@@ -153,7 +153,7 @@ def LSFIR(H,N,tau,f,Fs,Wt=None):
     bFIR, res = np.linalg.lstsq(X,iRI)[:2]
 
     if not isinstance(res,np.ndarray):
-        print("Calculation of FIR filter coefficients finished with residual norm %e" % res)
+        print(("Calculation of FIR filter coefficients finished with residual norm %e" % res))
 
     return np.reshape(bFIR,(N+1,))
 

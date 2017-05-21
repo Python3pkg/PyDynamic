@@ -115,6 +115,6 @@ plt.tick_params(which='both', labelsize=16)
 plt.xlim(1.5,4)
 
 plt.figure(5);plt.clf()
-plt.errorbar(range(N+1), bF, np.sqrt(np.diag(UbF)))
+plt.errorbar(list(range(N+1)), bF, np.sqrt(np.diag(UbF)))
 
 plt.show()
